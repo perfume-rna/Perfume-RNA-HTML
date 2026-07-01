@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>My Web Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+header {
+    color: white;
+    background-color: rgb(50, 56, 79);
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#header-part-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+    margin-left: 20px;
+}
+
+#header-part-2 {
+    margin-left:auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: 50px; /* Adjust for fixed header */
+}
+
+#header img {
+    height: 50px;
+    width: auto;
+}
+
+#header a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+#right-menu-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+#second-content{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#second-content img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* Dark Overlay */
+#second-content::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:-1;
+}
+
+.content{
+    text-align:center;
+    color:#ffffff;
+    max-width:700px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap: 20px;
+}
+
+.content h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.content p{
+    font-size:1.2rem;
+    line-height:1.6;
+}
+
+.content button{
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color:#282886;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    margin-top: 10px;
+}
+
+#third-content{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:50px 20px;
+    background-color:#f4f4f4;
+}
+
+.detail-third-content {
+    width:30%;
+    text-align:center;
+    padding:20px;
+    background-color:#fff;
+    box-shadow:0 2px 5px rgba(0,0,0,.1);
+    border-radius:10px;
+}
+
+.detail-third-content div img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.detail-third-content div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#fourth-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 20px;
+    overflow-x: auto;
+}
+
+#fourth-content div {
+    width: 15%;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    flex-shrink: 0; /* Prevent shrinking */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#fourth-content div img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+#fifth-content {
+    width: 100%;
+    background-color: rgb(209, 212, 233);
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#fifth-content > div {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    overflow-x: auto;
+}
+
+.home-product {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-product img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.home-product b {
+    color: rgb(32, 43, 109);
+}
+
+.product-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-price {
+    gap: 3px;
+}
+
+#footer-section {
+    background-color: #30384a;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#footer-info-site {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#footer-info-site div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 20px;
+    background-color: transparent;
+    color: white;
+}
+
+#footer-socials h2 {
+    color: white;
+}
+
+#footer-socials p {
+    font-size: 15px;
+    color: rgb(237, 237, 237);
+    max-width: 300px;
+}
+
+#footer-socials b {
+    color: white;
+}
+
+#stay_tuned {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1001;
+    display: none;
+    inset: 0;
+}
+
+#stay_tuned img {
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div id="header-part-1">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-youtube"></i>
+    </div>
+    <div id="header-part-2">
+        <p>Free shipping on orders over RM100 !!!</p>
+    </div>
+</header>
+
+<section id="header">
+    <img src="https://i.ibb.co/zTTrRyLs/Re-DNA-Logo-Confirmed-removebg-preview.png" alt="Logo">
+    <div id="middle-menu-header">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+    </div>
+    <div id="right-menu-header">
+        <i class="fa-solid fa-envelope"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+</section>
+
+<section id="second-content">
+    <img src="https://i.ibb.co/s9G21XCx/Note-GPT-Image-20260701074619.png"
+         alt="Background">
+
+    <div class="content">
+        <h1>Welcome to Perfume RNA</h1>
+        <p>
+            We specialize in providing high-quality perfumes that cater to your unique style and personality. 
+            Explore our collection and find your signature scent today!
+        </p>
+        <button onclick="showStayTuned()">Shop Now</button>
+    </div>
+</section>
+
+<section id="third-content">
+    <div class="detail-third-content">
+        <div>
+            <i class="fa-solid fa-thumbs-up" style="font-size: 24px; color: #ff83e8;"></i>
+        </div>
+        <h2>Best Quality</h2>
+        <p>We use only the finest ingredients to create our perfumes, ensuring a superior scent experience.</p>
+    </div>
+
+    <div class="detail-third-content">
+        <div>
+            <i class="fa-solid fa-truck" style="font-size: 24px; color: #ff83e8;"></i>
+        </div>
+        <h2>Fast Delivery</h2>
+        <p>We offer fast and reliable delivery services to get your favorite perfumes to you quickly.</p>
+    </div>
+
+    <div class="detail-third-content">
+        <div>
+            <i class="fa-solid fa-info-circle" style="font-size: 24px; color: #ff83e8;"></i>
+        </div>
+        <h2>About This Page</h2>
+        <p>This is a simple web page created as an example.</p>
+    </div>
+</section>
+
+<section id="fourth-content">
+    <div>
+        <img src="https://pagpackaging.com/wp-content/uploads/2024/11/Guerlain12.png" alt="Logo">
+        <p>Category 1</p>
+    </div>
+
+    <div>
+        <img src="https://i.pinimg.com/736x/87/36/2f/87362f854b3c47462c79787e71e108a6.jpg" alt="Logo">
+        <p>Category 2</p>
+    </div>
+
+    <div>
+        <img src="https://custompackingco.com/wp-content/uploads/2025/09/gold-perfume-bottle.webp" alt="Logo">
+        <p>Category 3</p>
+    </div>
+
+    <div>
+        <img src="https://m.media-amazon.com/images/I/71MB8uwz2lL.jpg" alt="Logo">
+        <p>Category 4</p>
+    </div>
+</section>
+
+<section id="fifth-content">
+        <h1>Products you may like</h1>
+        <div>
+          <div class="home-product">
+            <img src="https://m.media-amazon.com/images/I/71MB8uwz2lL.jpg" alt="Logo">
+            <div class="product-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Product 1</p>
+            <div class="product-price">
+                <b>RM4.00</b>
+                <del>RM6.00</del>
+            </div>
+          </div>
+
+          <div class="home-product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_wf9dLr9vcQ5qlJp1VLxd_8lhixbp7qLq15fV6p5Z1jbRuxGeLypwDlT0&s=10" alt="Logo">
+            <div class="product-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p>Product 2</p>
+            <div class="product-price">
+                <b>RM4.50</b>
+                <del>RM7.90</del>
+            </div>
+          </div>
+
+          <div class="home-product">
+            <img src="https://i.pinimg.com/736x/87/36/2f/87362f854b3c47462c79787e71e108a6.jpg" alt="Logo">
+            <div class="product-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Product 3</p>
+            <div class="product-price">
+                <b>RM4.00</b>
+                <del>RM10.00</del>
+            </div>
+          </div>
+
+          <div class="home-product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQcdQcb6yRN0zf4K4jF08_4b5zLlwQDLIeStRApFtpOUca50P_D-UNQAab&s=10" alt="Logo">
+            <div class="product-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p>Product 4</p>
+            <div class="product-price">
+                <b>RM5.00</b>
+                <del>RM6.00</del>
+            </div>
+          </div>
+        </div>
+</section>
+
+<section id="footer-section">
+      <div id="footer-info-site">
+        <div>
+          <i class="fa-solid fa-location-dot" style="color: white; font-size: 20px;"></i>
+          <b>123 Water Street, City</b>
+        </div>
+        <div>
+          <i class="fa-solid fa-phone" style="color: white; font-size: 20px;"></i>
+          <b>0123456789</b>
+        </div>
+        <div>
+          <i class="fa-solid fa-envelope" style="color: white; font-size: 20px;"></i>
+          <b>abishek0523g@gmail.com</b>
+        </div>
+      </div>
+      <div id="footer-socials">
+        <h2>Follow me on social media</h2>
+        <p>We are active on various social media platforms. Connect with us!</p>
+        <br>
+        <br>
+        <b>Copyright © 2026 Perfume RNA. All rights reserved.</b>
+      </div>
+</section>
+
+<section id="stay_tuned">
+    <img src="https://i.ibb.co/4wCFqdS9/IMG-2057.jpg" alt="Background">
+</section>
+
+</body>
+
+<script>
+    var stayTunedSection = document.getElementById('stay_tuned');
+    function showStayTuned() {
+        stayTunedSection.style.display = 'block';
+    }
+
+    function hideStayTuned() {
+        stayTunedSection.style.display = 'none';
+    }
+</script>
+</html>
