@@ -1038,6 +1038,52 @@ hr{
     }
 
 }
+
+/* Payment Success */
+#payment-success-screen {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #payment-success-screen p {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    #payment-success-screen button {
+      padding: 10px 30px;
+      border-radius: 6px;
+      background-color: #282886;
+      color: white;
+      border: none;
+    }
+
+    /* Payment Unsuccessful */
+    #payment-unsuccessful-screen {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #payment-unsuccessful-screen p {
+      margin-top: 0;
+      font-size: 17px;
+    }
+
+    #payment-unsuccessful-screen button {
+      padding: 10px 30px;
+      border-radius: 6px;
+      background-color: #282886;
+      color: white;
+      border: none;
+    }
 </style>
 </head>
 
@@ -1533,7 +1579,7 @@ hr{
             <textarea placeholder="Write your message here..."></textarea>
         </div>
 
-        <button id="checkout-button">
+        <button id="checkout-button" onclick="openPaymentSuccessScreen()">
             Proceed to Payment
         </button>
 
@@ -1599,6 +1645,22 @@ hr{
 </div>
 </section>
 
+<!--Payment Success-->
+<section id="payment-success-screen">
+        <i class="fa-solid fa-circle-check" style="color: green; font-size: 100px;"></i>
+        <h1>Payment Success!</h1>
+        <p>Thank you for ordering from Perfume RNA.</p>
+        <button onclick="closePaymentSuccessScreen()">Go back</button>
+</section>
+
+<!--Payment Unsuccessful-->
+<section id="payment-unsuccessful-screen">
+        <i class="fa-solid fa-circle-xmark" style="color: red; font-size: 100px;"></i>
+        <h2>Payment Unsuccessful!</h2>
+        <p>Please try again.</p>
+        <button>Go back</button>
+</section>
+
 </body>
 
 <script>
@@ -1606,6 +1668,7 @@ hr{
     var addToCartModal = document.getElementById('outer-container-add-to-cart');
     var checkoutScreen = document.getElementById('checkout-screen');
     var cartScreen = document.getElementById('cart-section');
+    var paymentSuccessScreen = document.getElementById('payment-success-screen');
     var collectionsScreen = document.getElementById('product-collections-section');
     var homeScreen = [document.getElementById('footer-section'), document.getElementById('home-banner'),document.getElementById('first-content'), document.getElementById('second-content'), document.getElementById('third-content'),
                       document.getElementById('fourth-content'),
@@ -1716,6 +1779,26 @@ window.addEventListener("resize", updateHomeBackground);
     }
 
     function closeCartScreen() {
+        checkoutScreen.style.display = "none";
+        collectionsScreen.style.display = "none";
+        cartScreen.style.display = "none";
+        homeScreen.forEach(element => {
+            element.style.display = "flex";
+        });
+    }
+
+    function openPaymentSuccessScreen() {
+        paymentSuccessScreen.style.display = "flex";
+        checkoutScreen.style.display = "none";
+        collectionsScreen.style.display = "none";
+        cartScreen.style.display = "none";
+        homeScreen.forEach(element => {
+            element.style.display = "none";
+        });
+    }
+
+    function closePaymentSuccessScreen() {
+        paymentSuccessScreen.style.display = "none";
         checkoutScreen.style.display = "none";
         collectionsScreen.style.display = "none";
         cartScreen.style.display = "none";
