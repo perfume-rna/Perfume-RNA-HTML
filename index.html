@@ -814,17 +814,13 @@ header {
 
 .cart-back-button button{
     padding:10px 18px;
-    background:#222;
+    background:#282886;
     color:#fff;
     border:none;
     border-radius:6px;
     cursor:pointer;
     font-size:15px;
     transition:0.3s;
-}
-
-.cart-back-button button:hover{
-    background:#000;
 }
 
 /* =========================
@@ -855,11 +851,28 @@ header {
 
 
 /* Checkout Screen */
+#checkout-screen {
+    width: 100%;
+    display: none;
+}
+
+#checkout-back-button button{
+    background:#282886;
+    color:#fff;
+    border:none;
+    padding:10px 25px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+    margin: 20px;
+}
+    
 #checkout-section{
     width:100%;
     max-width:1200px;
     margin:auto;
-    display:none;
+    display:flex;
     gap:25px;
     align-items:flex-start;
 }
@@ -1044,7 +1057,7 @@ hr{
     <section id="first-content">
         <img src="https://i.ibb.co/zTTrRyLs/Re-DNA-Logo-Confirmed-removebg-preview.png" alt="Logo">
         <div id="middle-menu-header">
-            <a onclick="openCollectionsScreen()">Menu</a>
+            <a href="#" onclick="openCollectionsScreen()">Menu</a>
             <a href="#third-content">About</a>
             <a href="#footer-section">Contact</a>
         </div>
@@ -1186,8 +1199,8 @@ hr{
     <section id="footer-section">
         <div id="footer-info-site">
             <div>
-                <i class="fa-solid fa-location-dot" style="color: white; font-size: 20px;"></i>
-                <b>123 Water Street, City</b>
+                <i class="fa-brands fa-instagram" style="color: white; font-size: 20px;"></i>
+                <b>rna-offcial</b>
             </div>
             
             <div>
@@ -1213,7 +1226,7 @@ hr{
     
     <!-- Stay Tuned Screen -->
     <section id="stay_tuned">
-        <img src="https://i.ibb.co/4wCFqdS9/IMG-2057.jpg" alt="Background">
+        <img src="https://i.ibb.co/4wCFqdS9/IMG-2057.jpg" alt="Background" onclick="window.close();">
     </section>
     
     <!-- Add to Cart Screen -->
@@ -1440,7 +1453,13 @@ hr{
 
 
 <!-- Checkout Section -->
-<section id="checkout-section">
+<section id="checkout-screen">
+    <div id="checkout-back-button">
+       <button onclick="closeCheckoutScreen()">
+          ← Back
+       </button>
+    </div>
+<div id="checkout-section">
 
     <!-- Checkout Form -->
     <div id="checkout-form">
@@ -1552,7 +1571,7 @@ hr{
 
             <div class="product-item">
                 <div>
-                    <strong>Modern Chair</strong><br>
+                    <strong>Jasmine Fragrance</strong><br>
                     Quantity: 1
                 </div>
                 <div>RM 99.00</div>
@@ -1560,7 +1579,7 @@ hr{
 
             <div class="product-item">
                 <div>
-                    <strong>Modern Chair</strong><br>
+                    <strong>Modern Ions</strong><br>
                     Quantity: 1
                 </div>
                 <div>RM 99.00</div>
@@ -1568,7 +1587,7 @@ hr{
 
             <div class="product-item">
                 <div>
-                    <strong>Modern Table</strong><br>
+                    <strong>Man Hell Fragrance</strong><br>
                     Quantity: 1
                 </div>
                 <div>RM 299.00</div>
@@ -1577,6 +1596,7 @@ hr{
         </div>
 
     </div>
+</div>
 </section>
 
 </body>
@@ -1584,7 +1604,7 @@ hr{
 <script>
     var stayTunedSection = document.getElementById('stay_tuned');
     var addToCartModal = document.getElementById('outer-container-add-to-cart');
-    var checkoutScreen = document.getElementById('checkout-section');
+    var checkoutScreen = document.getElementById('checkout-screen');
     var cartScreen = document.getElementById('cart-section');
     var collectionsScreen = document.getElementById('product-collections-section');
     var homeScreen = [document.getElementById('footer-section'), document.getElementById('home-banner'),document.getElementById('first-content'), document.getElementById('second-content'), document.getElementById('third-content'),
@@ -1651,7 +1671,7 @@ window.addEventListener("resize", updateHomeBackground);
 
 
     function openCheckoutScreen() {
-        checkoutScreen.style.display = "flex";
+        checkoutScreen.style.display = "block";
         collectionsScreen.style.display = "none";
         cartScreen.style.display = "none";
         homeScreen.forEach(element => {
