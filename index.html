@@ -1679,7 +1679,7 @@ hr{
                       document.getElementById('fifth-content')];
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (window.innerWidth < 600) {
+      if (window.innerWidth < 800) {
         document.getElementById("home-background").src =
             "https://ik.imagekit.io/qvbmi5bdp/Mobile-Background";
       }
@@ -1688,7 +1688,7 @@ hr{
     function updateHomeBackground() {
        const image = document.getElementById("home-background");
 
-       if (window.innerWidth < 600) {
+       if (window.innerWidth < 800) {
           image.src = "https://ik.imagekit.io/qvbmi5bdp/Mobile-Background";
        } else {
           image.src = "https://ik.imagekit.io/qvbmi5bdp/background-1.png?updatedAt=1782948541949";
